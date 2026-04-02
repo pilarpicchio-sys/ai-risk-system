@@ -11,13 +11,21 @@ from datetime import datetime
 
 import json
 
-with open("reports/data/live_signals.json") as f:
-    data = json.load(f)
+try:
+    with open("reports/data/live_signals.json") as f:
+        data = json.load(f)
 
-assets = {name: None for name in data["assets"]}
-signals = data["signals"]
-sizes = data["sizes"]
-weights = data["weights"]
+    assets = {name: None for name in data["assets"]}
+    signals = data["signals"]
+    sizes = data["sizes"]
+    weights = data["weights"]
+
+except:
+    # fallback demo (cloud safe)
+    assets = {"sp500": None, "gold": None, "bonds": None}
+    signals = [0, 0, 0]
+    sizes = [0.1, 0.1, 0.1]
+    weights = [0.4, 0.6, 0.0]
 
 # =========================
 # CONFIG
