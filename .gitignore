@@ -8,6 +8,6 @@ reports/charts/
 
 *.npy
 *.csv
-*.png
+# *.png
 
 .env
