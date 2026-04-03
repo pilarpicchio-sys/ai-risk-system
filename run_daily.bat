@@ -2,7 +2,7 @@
 cd /d C:\Users\Gianluca\ai-risk-system-v3
 
 echo === RUN LIVE ===
-call venv\Scripts\python.exe -m src.app.run_live
+call venv\Scripts\python.exe run_live_safe.py
 
 echo === BACKTEST ===
 call venv\Scripts\python.exe -m src.portfolio.multi_asset_backtest
