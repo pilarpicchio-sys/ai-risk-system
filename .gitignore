@@ -4,7 +4,8 @@ __pycache__/
 
 data/
 reports/data/
-reports/charts/
+reports/charts/*
+!reports/charts/portfolio.png
 
 *.npy
 *.csv
