@@ -1,0 +1,17 @@
+# AI Risk Report — 03 April 2026
+
+## Signals
+
+sp500: signal=0.0095, size=0.094, weight=0.44
+gold: signal=-0.0334, size=0.081, weight=0.56
+bonds: signal=0.0047, size=0.046, weight=0.00
+
+## Capital Allocation (€)
+
+sp500: €418.67
+gold: €448.30
+bonds: €0.00
+
+## Alerts
+
+No strong signals today.

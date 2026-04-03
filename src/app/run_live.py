@@ -263,3 +263,48 @@ data = {
 
 with open("reports/data/live_signals.json", "w") as f:
     json.dump(data, f)
+
+    
+
+# =========================
+# SAVE SIMPLE REPORT
+# =========================
+
+from datetime import datetime
+import os
+
+today = datetime.today().strftime('%d %B %Y')
+
+report = f"# AI Risk Report — {today}\n\n"
+
+report += "## Signals\n\n"
+
+for i, name in enumerate(assets.keys()):
+    report += f"{name}: signal={signals[i]:.4f}, size={sizes[i]:.3f}, weight={weights[i]:.2f}\n"
+
+report += "\n## Capital Allocation (€)\n\n"
+
+for i, name in enumerate(assets.keys()):
+    alloc = capital * weights[i] * sizes[i]
+    report += f"{name}: €{alloc:.2f}\n"
+
+report += "\n## Alerts\n\n"
+
+triggered = False
+
+for i, name in enumerate(assets.keys()):
+    if sizes[i] > 0.25:
+        triggered = True
+        direction = "LONG" if signals[i] > 0 else "REDUCE"
+        report += f"{name}: {direction}\n"
+
+if not triggered:
+    report += "No strong signals today.\n"
+
+# salva file
+os.makedirs("reports", exist_ok=True)
+
+with open("reports/daily_report.txt", "w", encoding="utf-8") as f:
+    f.write(report)
+
+print("📝 daily_report.txt aggiornato")
